@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Canvas Sandbox</title>
+ <style type="text/css">
+   body {
+		display: block;
+		margin:	0 ;
+	}
+   canvas {
+		border: 1px solid black;
+	}
+ </style>
+</head>
+<body>
+	<menu type="context" id="my_menu" >
+		<menuitem>File</menuitem>
+			<menu label="New">
+				<menuitem>L.Turnout</menuitem>
+				<menuitem>R.Turnout</menuitem>
+				<menuitem>S.Section</menuitem>
+				<menuitem>L.Turn</menuitem>
+				<menuitem>R.Turn</menuitem>
+				<menuitem>EP.Siding</menuitem>
+				<menuitem>X.Over</menuitem>
+			</menu>
+		<menuitem>Old</menuitem>
+		<menuitem>Borrowed</menuitem>
+		<menuitem>Blue</menuitem>
+	</menu>
+	<canvas contextmenu="my_menu" ></canvas>
+	<script src="chuchu.js"> </script>
+</body>
+</html>
