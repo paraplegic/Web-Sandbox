@@ -5,8 +5,8 @@
 
 var cnv = document.querySelector( "canvas" );
 var mnu = document.querySelector( "menu" );
-cnv.width = window.innerWidth - 10 ;
-cnv.height = window.innerHeight - 10 ;
+cnv.width = window.innerWidth ;
+cnv.height = window.innerHeight ;
 
 // turn off the context menu ...
 // cnv.oncontextmenu = (e) => e.preventDefault();
@@ -17,19 +17,19 @@ cnv.height = window.innerHeight - 10 ;
 
 var c = cnv.getContext( '2d' );
 
-c.fillStyle = 'rgba( 0, 244, 128, 0.3 )';
-c.fillRect( 100, 100, 100, 100 ) ;
-c.fillRect( 200, 100, 100, 100 ) ;
-c.fillRect( 200, 200, 100, 100 ) ;
+// c.fillStyle = 'rgba( 0, 244, 128, 0.3 )';
+// c.fillRect( 100, 100, 100, 100 ) ;
+// c.fillRect( 200, 100, 100, 100 ) ;
+// c.fillRect( 200, 200, 100, 100 ) ;
 //
 //console.log( cnv.width, cnv.height ) ;
 //
-c.beginPath() ;
-c.moveTo( 50, 300 );
-c.lineTo( 300, 100 );
-c.lineTo( 400, 300 );
-c.strokeStyle = "#dedede";
-c.stroke();
+// c.beginPath() ;
+// c.moveTo( 50, 300 );
+// c.lineTo( 300, 100 );
+// c.lineTo( 400, 300 );
+// c.strokeStyle = "#dedede";
+// c.stroke();
 //
 //c.beginPath() ;
 //c.arc( 300, 300, 30, 0, Math.PI * 2, false );
@@ -46,6 +46,16 @@ c.stroke();
 //	c.stroke() ;
 //}
 
+function fullscreen(){
+ 
+	if( cnv.webkitRequestFullScreen) {
+		 cnv.webkitRequestFullScreen();
+	} else {
+		cnv.mozRequestFullScreen();
+	}            
+}
+
+ 
 
 function randomColour() {
 	var color = "#";
@@ -72,6 +82,8 @@ window.addEventListener('mousemove', function(event){
 	mouse.x = event.clientX ;
 	mouse.y = event.clientY ;
 });
+
+window.addEventListener( 'load', fullscreen );
 
 function Circle(x, y, radius, dx, dy) {
 	this.x = x;
@@ -121,29 +133,8 @@ function Circle(x, y, radius, dx, dy) {
 	}
 }
 
-//var circles = [] ;
-//
-//for( var i = 0 ; i < ballCount; i++ )
-//{
-//	var x = Math.random() * ( innerWidth - radius * 2 ) + radius ;
-//	var y = Math.random() * ( innerHeight - radius * 2 ) + radius  ;
-//	var dx = (Math.random() - 0.5 ) * 10 ;
-//	var dy = (Math.random() - 0.5 ) * 10 ;
-//	var radius = Math.random() * maxRadius ;
-//
-//	circles.push( new Circle( x, y, radius, dx, dy ) );
-//}
-//
-//function animate() 
-//{
-//
-//	requestAnimationFrame( animate );
-//	c.clearRect( 0, 0, innerWidth, innerHeight ) ;
-//	for( var i = 0; i < circles.length ; i++ )
-//	{
-//		circles[i].update() ;
-//	}
-//
-//}
-//
-//animate() ;
+function line( x, y, orientation, length ){
+}
+
+function turnOut( x, y, orientation, direction ){
+}
