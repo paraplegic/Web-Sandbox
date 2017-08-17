@@ -3,6 +3,8 @@
 // model train layouts ...
 // (eventually).
 
+var debug = true;
+
 var cnv = document.querySelector( "canvas" );
 var mnu = document.querySelector( "menu" );
 cnv.width = window.innerWidth ;
@@ -47,15 +49,12 @@ var c = cnv.getContext( '2d' );
 //}
 
 function fullscreen(){
- 
 	if( cnv.webkitRequestFullScreen) {
 		 cnv.webkitRequestFullScreen();
 	} else {
 		cnv.mozRequestFullScreen();
 	}            
 }
-
- 
 
 function randomColour() {
 	var color = "#";
@@ -73,17 +72,6 @@ var mouse = {
 	x: undefined,
 	y: undefined
 };
-
-window.addEventListener('oncontextmenu', function(event){
-	console.log( event );
-});
-
-window.addEventListener('mousemove', function(event){
-	mouse.x = event.clientX ;
-	mouse.y = event.clientY ;
-});
-
-window.addEventListener( 'load', fullscreen );
 
 function Circle(x, y, radius, dx, dy) {
 	this.x = x;
@@ -138,3 +126,49 @@ function line( x, y, orientation, length ){
 
 function turnOut( x, y, orientation, direction ){
 }
+
+function clearRect( x, y, a, b ){
+	c.clearRect( x, y, a, b ) ;
+}
+
+function drawTxt( x, y, txt ){
+	c.font = "8px Sans-Serif";
+	c.textBaseline = "top";
+	c.fillStyle = "#000000";
+	c.fillText (txt, x, y);
+}
+
+function drawBox( x, y, h, w ){
+	c.lineWidth = 2;
+	c.strokeStyle = '#000000';
+	c.strokeRect( x,y,h,w );
+}
+
+function drawBoxAtMouse( ev ) {
+	if( ev.which != 3 )
+	{
+		var height = 10;
+		var width = 10;
+		drawBox( mouse.x, mouse.y, height, width );
+	}
+}
+
+window.addEventListener( 'load', fullscreen );
+
+window.addEventListener( 'mousedown', drawBoxAtMouse );
+
+window.addEventListener('oncontextmenu', function(event){
+	console.log( event );
+});
+
+window.addEventListener('mousemove', function(event){
+	mouse.x = event.clientX ;
+	mouse.y = event.clientY ;
+	if( debug == true )
+	{
+		clearRect( 0, 0, 200, 20 );
+		drawTxt( 8, 8, '(' + mouse.x + ',' + mouse.y + ')' );
+	}
+});
+
+
